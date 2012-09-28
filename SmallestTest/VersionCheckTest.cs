@@ -37,5 +37,19 @@ namespace SmallestTest
             Assert.IsTrue(Helpers.Has40C(userAgentCLRString), ".NET Version 4.0 Client Profile");
             Assert.IsTrue(Helpers.Has40E(userAgentCLRString), ".NET Version 4.0 Full");
         }
+
+        [TestMethod]
+        public void CheckAllUserAgentDetectionsCanFail()
+        {
+            var userAgentCLRString = string.Empty;
+            Assert.IsFalse(Helpers.Has10(userAgentCLRString), ".NET Version 1.0");
+            Assert.IsFalse(Helpers.Has11(userAgentCLRString), ".NET Version 1.1");
+            Assert.IsFalse(Helpers.Has20(userAgentCLRString), ".NET Version 2.0");
+            Assert.IsFalse(Helpers.Has35(userAgentCLRString), ".NET Version 3.5");
+            Assert.IsFalse(Helpers.Has35SP1C(userAgentCLRString), ".NET Version 3.5 SP1 Client Profile");
+            Assert.IsFalse(Helpers.Has35SP1E(userAgentCLRString), ".NET Version 3.5 SP1 Full");
+            Assert.IsFalse(Helpers.Has40C(userAgentCLRString), ".NET Version 4.0 Client Profile");
+            Assert.IsFalse(Helpers.Has40E(userAgentCLRString), ".NET Version 4.0 Full");
+        }
     }
 }
