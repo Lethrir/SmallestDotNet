@@ -8,11 +8,16 @@ namespace SmallestDotNetLib.DotNetVersions
 {
     public class Net3Check : DotNetVersionCheck
     {
+        protected override string VersionLabel
+        {
+            get { return "V3.0"; }
+        }
+
         public Net3Check(DotNetVersionFactory factory) : base(factory) { }
 
         protected override bool IsInstalled(string userAgent)
         {
-            return userAgent.Contains(".NET CLR 3.0");
+            return userAgent.Contains(Constants.Version30Full);
         }
 
         protected override DotNetVersion NextVersion
@@ -20,19 +25,11 @@ namespace SmallestDotNetLib.DotNetVersions
             get { return DotNetVersion.DotNet2; }
         }
 
-        protected override string UpToDateMessage
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         protected override string LatestVersionMissingMessage
         {
-            get { throw new NotImplementedException(); }
+            // never latest
+            get { return string.Empty; }
         }
 
-        protected override string VersionInstalledMessage
-        {
-            get { throw new NotImplementedException(); }
-        }
     }
 }

@@ -8,6 +8,11 @@ namespace SmallestDotNetLib.DotNetVersions
 {
     public class NullDotNetVersion : DotNetVersionCheck
     {
+        protected override string VersionLabel
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         public NullDotNetVersion(DotNetVersionFactory factory) : base(factory) { }
 
         public override string CheckDotNet(string userAgent, bool latestVersion)
@@ -25,17 +30,7 @@ namespace SmallestDotNetLib.DotNetVersions
             get { throw new NotImplementedException(); }
         }
 
-        protected override string UpToDateMessage
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         protected override string LatestVersionMissingMessage
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        protected override string VersionInstalledMessage
         {
             get { throw new NotImplementedException(); }
         }

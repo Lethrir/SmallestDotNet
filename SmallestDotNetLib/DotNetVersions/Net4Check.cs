@@ -8,32 +8,38 @@ namespace SmallestDotNetLib.DotNetVersions
 {
     public class Net4Check : DotNetVersionCheck
     {
+        protected override string VersionLabel
+        {
+            get { return "V4.0"; }
+        }
+
         public Net4Check(DotNetVersionFactory factory) : base(factory) { }
-
-
+        
         protected override bool IsInstalled(string userAgent)
         {
-            throw new NotImplementedException();
+            return Has40C(userAgent) || Has40E(userAgent);
         }
 
         protected override DotNetVersion NextVersion
         {
-            get { throw new NotImplementedException(); }
-        }
-
-        protected override string UpToDateMessage
-        {
-            get { throw new NotImplementedException(); }
+            get { return DotNetVersion.DotNet3_5; }
         }
 
         protected override string LatestVersionMissingMessage
         {
-            get { throw new NotImplementedException(); }
+            get { return Constants.GetLatestVersionMissingMessage(VersionLabel, "http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=17718", "48MB"); }
         }
 
-        protected override string VersionInstalledMessage
+        public static bool Has40E(String UserAgent)
         {
-            get { throw new NotImplementedException(); }
+            return UserAgent.Contains(Constants.Version40Full);
         }
+
+        public static bool Has40C(String UserAgent)
+        {
+            return UserAgent.Contains(Constants.Version40Client);
+        }
+
+
     }
 }

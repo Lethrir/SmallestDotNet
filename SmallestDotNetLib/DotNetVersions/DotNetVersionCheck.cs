@@ -9,13 +9,13 @@ namespace SmallestDotNetLib.DotNetVersions
     public abstract class DotNetVersionCheck
     {
         private readonly DotNetVersionFactory _factory;
+        protected abstract string VersionLabel { get; }
 
         protected abstract bool IsInstalled(string userAgent);
         protected abstract DotNetVersion NextVersion { get; }
-        protected abstract string UpToDateMessage { get; }
+        
         protected abstract string LatestVersionMissingMessage { get; }
-        protected abstract string VersionInstalledMessage { get; }
-
+        
         public DotNetVersionCheck(DotNetVersionFactory factory)
         {
             _factory = factory;
@@ -46,6 +46,19 @@ namespace SmallestDotNetLib.DotNetVersions
         private string NextVersionMessage(string userAgent)
         {
             return _factory.GetVersion(NextVersion).CheckDotNet(userAgent, false);
+        }
+
+        protected virtual string UpToDateMessage
+        {
+            get { return Constants.GetLatestInstalledMessage(VersionLabel); }
+        }
+
+        private string VersionInstalledMessage
+        {
+            get
+            {
+                return Constants.GetOldVersionMessage(VersionLabel);
+            }
         }
     }
 }

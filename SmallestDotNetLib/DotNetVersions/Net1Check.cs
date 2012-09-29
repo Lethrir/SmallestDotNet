@@ -8,11 +8,13 @@ namespace SmallestDotNetLib.DotNetVersions
 {
     public class Net1Check : DotNetVersionCheck
     {
+        protected override string VersionLabel { get { return "V1.0"; } }
+
         public Net1Check(DotNetVersionFactory factory) : base(factory) { }
 
         protected override bool IsInstalled(string userAgent)
         {
-            return userAgent.Contains(".NET CLR 1.0");
+            return userAgent.Contains(Constants.Version10Full);
         }
 
         protected override DotNetVersion NextVersion
@@ -20,19 +22,10 @@ namespace SmallestDotNetLib.DotNetVersions
             get { return DotNetVersion.Null; }
         }
 
-        protected override string UpToDateMessage
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         protected override string LatestVersionMissingMessage
         {
-            get { throw new NotImplementedException(); }
-        }
-
-        protected override string VersionInstalledMessage
-        {
-            get { throw new NotImplementedException(); }
+            // no version cannot be updated to 1.1
+            get { return string.Empty; }
         }
     }
 }

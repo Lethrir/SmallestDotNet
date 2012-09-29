@@ -12,7 +12,7 @@ namespace SmallestDotNetLib.WindowsVersions
 
         protected override WindowsVersion CheckVersion(string userAgent)
         {
-            return (userAgent.Contains("Windows NT 6.2"))
+            return (userAgent.Contains(Constants.Windows8))
                     ? WindowsVersion.Windows8
                     : WindowsVersion.Null;    
         }

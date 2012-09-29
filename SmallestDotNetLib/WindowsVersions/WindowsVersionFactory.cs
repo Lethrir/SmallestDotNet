@@ -8,6 +8,11 @@ namespace SmallestDotNetLib.WindowsVersions
 {
     public class WindowsVersionFactory
     {
+        public WindowsVersionCheck GetLatestWindows()
+        {
+            return GetVersion(WindowsVersion.Windows8);
+        }
+
         public WindowsVersionCheck GetVersion(WindowsVersion version)
         {
             switch (version)

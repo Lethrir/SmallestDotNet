@@ -8,6 +8,11 @@ namespace SmallestDotNetLib.DotNetVersions
 {
     public class Net4_5Check : DotNetVersionCheck
     {
+        protected override string VersionLabel
+        {
+            get { return "V4.5"; }
+        }
+
         public Net4_5Check(DotNetVersionFactory factory) :base(factory)
         {
         }
@@ -19,22 +24,17 @@ namespace SmallestDotNetLib.DotNetVersions
 
         protected override bool IsInstalled(string userAgent)
         {
-            throw new NotImplementedException();
+            return userAgent.Contains(Constants.Windows8);
         }
 
         protected override string UpToDateMessage
         {
-            get { throw new NotImplementedException(); }
+            get { return String.Format(Constants.EarlyAdopter, "full install of .NET 4.5"); }
         }
 
         protected override string LatestVersionMissingMessage
         {
-            get { throw new NotImplementedException(); }
-        }
-
-        protected override string VersionInstalledMessage
-        {
-            get { throw new NotImplementedException(); }
+            get { return "Your system supports .NET 4.5 but we are unable to tell if it is installed."; }
         }
     }
 }
