@@ -155,8 +155,6 @@ public class Helpers
             default:
                 return String.Format("Looks like you <i>might</i> {2} have a <em>beta</em> version of <strong>.NET version 3.5 SP1</strong>. Perhaps you're a programmer or you know one? You should probably uninstall that version and run the small setup program for {0}. Also, you might make sure your system is setup to get updates from {1} automatically. This will make sure your system is up to date with the latest stuff, including the latest .NET Framework.", Constants.DotNet35Online, Constants.WindowsUpdate, hasDotNet4 ? "also" : "");
         }
-
-        return "";
     }
 
     private static string CheckDotNet3_5UnSupportedOs(string UserAgent, string agent, string friendlyName)
